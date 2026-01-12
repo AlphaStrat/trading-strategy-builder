@@ -1,40 +1,50 @@
-# Visual Trading Strategy Builder & Transpiler
+# Algorithmic Trading Strategy Builder & Transpiler
 
-A high-performance full-stack application that allows users to design algorithmic trading strategies through a visual dependency graph and compile them into executable Pine Script (TradingView).
+This project is a full-stack engine designed to close the gap between visual strategy intuition and executable algorithmic code. It enables traders to design, validate, and compile algorithmic trading strategies using a modular, visual dependency graph. Unlike simple drag-and-drop tools, this system functions as a **Domain-Specific Language (DSL) Transpiler**. It treats a visual trading strategy as an **Abstract Syntax Tree (AST)**, performing deep graph analysis to generate optimized, production-ready Pine Script code.
 
-## 🚀 Key Features
+### High-Integrity Engineering
+*   **Topological Dependency Resolution**: Utilizes Kahn’s Algorithm to recursively resolve indicator-on-indicator dependencies (e.g., if an EMA strategy is also dependant on RSI values), ensuring that the generated code respects strict execution order.
+*   **Signal Mutual Exclusion Architecture**: Implements state-snapshotting (`can_buy` / `can_sell` primitives) to eliminate "signal flicker" and ensure that entry/exit transitions are atomically consistent within a single bar.
+*   **1:1 Signal-to-Execution Synchronization**: Engineered to ensure that visual chart annotations precisely match the strategy's internal execution state, solving the common "Phantom Signals".
 
-- **Visual Dependency Graph**: Build complex strategies using a drag-and-drop interface powered by React Flow.
-- **Advanced Indicator Chaining**: Support for recursive indicator-on-indicator calculations (e.g., RSI of an EMA).
-- **Modular Transpiler**: A custom backend engine that translates graph-based Abstract Syntax Trees (AST) into production-ready code.
-- **Signal Mutual Exclusion**: Built-in protection against signal flicker and "same-bar double flips" using state snapshotting.
-- **Professional Risk Management**: Dynamic and optional Stop-Loss/Take-Profit controls that omit unused logic for cleaner scripts.
-- **Real-Time Validation**: Strict numeric validation and parameter checking across the entire stack.
+---
 
-## 🛠 Tech Stack
+## Key Capabilities
 
-- **Frontend**: React, React Flow, Tailwind CSS, Vite, Axios.
-- **Backend**: Python (FastAPI), Pydantic, Uvicorn.
-- **Algorithms**: Topological Sorting (Kahn's Algorithm) for dependency resolution, Graph Traversal.
-- **Logic**: Pine Script v5 standards.
+- **Recursive Indicator Composition**: Create "Indicator Chains" where any technical indicator can serve as a source for another, enabling deep multi-layer analysis.
+- **Modular Action Logic**: Decouples entry triggers from exit logic, allowing for "Flip" strategies (reversals) or traditional fixed-risk frameworks.
+- **Dynamic Variable Scoping**: Automatically manages unique variable namespace isolation in the generated code, preventing naming collisions in complex strategies.
+- **State-Persistent Risk Management**: Handles conditional Stop-Loss and Take-Profit logic as independent state machines, omitting unused logic to minimize cumulative script latency.
 
-## 🏗 System Architecture
+---
 
-The application is architected as a modular transpiler.
-1. **Frontend**: Captures the strategy as a JSON-based dependency graph.
-2. **Topological Engine**: The backend performs a topological sort on the nodes to determine the correct execution order (ensuring dependencies like indicators are calculated before the logic nodes that use them).
-3. **Synchronization Layer**: Ensures that chart-based visual signals and execution-level triggers are perfectly synchronized, eliminating visual discrepancies.
+## Tech Stack & Algorithms
 
-## 🚦 Getting Started
+- **Frontend**: React.js with **React Flow** for dynamic graph visualization and state management.
+- **Backend**: **FastAPI** (Python 3.10+) utilizing Pydantic for strict diagram validation of strategy graphs.
+- **Core Algorithms**: 
+    - **Topological Sorting** for dependency resolution.
+    - **Graph Traversal** for recursive source routing.
+    - **Transpilation Logic** for mapping Abstract Nodes to Pine Script v5 primitives.
+- **Styling**: Tailwind CSS with custom internal design for a clean interface experience.
 
-### Backend
+---
+
+## Getting Started
+
+### Backend Execution
 1. `cd backend`
 2. `pip install -r requirements.txt`
-3. `python main.py` (Runs on port 8010)
+3. `python main.py` (Default listener: port 8010)
 
-### Frontend
+### Frontend Environment
 1. `cd frontend`
 2. `npm install`
-3. `npm run dev` (Runs on port 5173)
+3. `npm run dev` (Default listener: port 5173)
 
+---
 
+## 📈 Roadmap & Future Scope
+- [ ] Integration of C# (NinjaScript) and MQL5 transpilation layers.
+- [ ] Direct integration with CCXT for live crypto-exchange execution.
+- [ ] Pre-compilation backtesting engine within the visual editor.
