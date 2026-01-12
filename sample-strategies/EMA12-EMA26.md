@@ -53,7 +53,7 @@ This strategy demonstrates a basic **trend-following approach**, where trades ar
 
 **Strategy Metrics on Tradingview**
 
-![Strategy Metrics(assets/strat-ema.PNG)  
+![Strategy Metrics](assets/strat-ema.PNG)  
 *Visual representation of the Strategy Metrics on Tradingview.*
 
 ---
