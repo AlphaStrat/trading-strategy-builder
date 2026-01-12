@@ -44,7 +44,9 @@ This project is a full-stack engine designed to close the gap between visual str
 
 ---
 
-## 📈 Roadmap & Future Scope
-- [ ] Integration of C# (NinjaScript) and MQL5 transpilation layers.
-- [ ] Direct integration with CCXT for live crypto-exchange execution.
+## Roadmap & Future Scope
+- [ ] Potential Integration of C# (NinjaScript) and MQL5 transpilation layers.
+- [ ] Direct integration with Interactive Brokers for live asset-exchange execution.
 - [ ] Pre-compilation backtesting engine within the visual editor.
+- [ ] Machine Learning Models to use within the workspace for trading strategies
+
