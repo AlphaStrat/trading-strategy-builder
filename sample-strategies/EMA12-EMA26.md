@@ -38,22 +38,22 @@ This strategy demonstrates a basic **trend-following approach**, where trades ar
 
 **Strategy Setup**
 
-![Visual Drag and Drop from Builder](assets/strat-ema3.PNG)  
+![Visual Drag and Drop from Builder](assets/strat-ema3.png)  
 *Setting up EMA12 and EMA26 nodes.*
 
 **Buy/Sell Signals on Chart**
 
-![Chart Indicator](assets/strat-ema4.PNG)  
+![Chart Indicator](assets/strat-ema4.png)  
 *Buy and sell signals appear on the chart.*
 
 **List of Trades**
 
-![List of Trades](assets/strat-ema2.PNG)  
+![List of Trades](assets/strat-ema2.png)  
 *Buy and Sells Backtested.*
 
 **Strategy Metrics on Tradingview**
 
-![Strategy Metrics](assets/strat-ema.PNG)  
+![Strategy Metrics](assets/strat-ema.png)  
 *Visual representation of the Strategy Metrics on Tradingview.*
 
 ---
