@@ -1,11 +1,11 @@
-# Algorithmic Trading Strategy Builder & Transpiler
+ # Algorithmic Trading Strategy Builder & Transpiler
 
 This prototype is a full-stack platform that is part of the main project. This application is designed to close the gap between visual strategy intuition and executable algorithmic code. It enables traders to design, validate, and compile algorithmic trading strategies using a modular, visual dependency graph. Unlike simple drag-and-drop tools, this system functions as a **Domain-Specific Language (DSL) Transpiler**. It treats a visual trading strategy as an **Abstract Syntax Tree (AST)**, performing deep graph analysis to generate optimized, production-ready Pine Script code.
 
 ### High-Integrity Engineering
 *   **Topological Dependency Resolution**: Utilizes Kahn’s Algorithm to recursively resolve indicator-on-indicator dependencies (e.g., if an EMA strategy is also dependant on RSI values), ensuring that the generated code respects strict execution order.
 *   **Signal Mutual Exclusion Architecture**: Implements state-snapshotting (`can_buy` / `can_sell` primitives) to eliminate "signal flicker" and ensure that entry/exit transitions are atomically consistent within a single bar.
-*   **1:1 Signal-to-Execution Synchronization**: Engineered to ensure that visual chart annotations precisely match the strategy's internal execution state, solving the common "Phantom Signals".
+*   **1:1 Signal-to-Execution Synchronization**: Engineered to ensure that visual chart annotations precisely match the strategy's internal execution state, solving the common "Phantom Signals" problem.
 
 ![Visual Drag and Drop from Builder](images/strat-ema3.png)  
 *Setting up Demo for EMA12 and EMA26 nodes.*
@@ -52,6 +52,7 @@ This prototype is a full-stack platform that is part of the main project. This a
 - [ ] Direct integration with Interactive Brokers for live asset-exchange execution.
 - [ ] Pre-compilation backtesting engine within the visual editor.
 - [ ] Machine Learning Models to use within the workspace for trading strategies
+
 
 
 
