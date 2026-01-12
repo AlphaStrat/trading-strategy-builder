@@ -9,6 +9,7 @@ This prototype is a full-stack platform that is part of the main project. This a
 
 ![Visual Drag and Drop from Builder](images/strat-ema3.png)  
 *Setting up Demo for EMA12 and EMA26 nodes.*
+
 ---
 
 ## Key Capabilities
