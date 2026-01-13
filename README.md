@@ -33,6 +33,17 @@ This prototype is a full-stack platform that is part of the main project. This a
 
 ---
 
+## Implementation Architecture
+
+The compilation engine represents strategy graphs as directed acyclic graphs (DAGs) using:
+- **Adjacency Lists** (Python dictionaries) to track node dependencies
+- **In-degree Counters** to validate prerequisite completion
+- **Cycle Detection** to ensure strategies are executable DAGs
+
+This data structure choice enables O(1) lookups during topological sorting, ensuring efficient compilation even for complex strategies with recursive indicator chains.
+
+---
+
 ## Getting Started
 
 ### Backend Execution
@@ -52,6 +63,7 @@ This prototype is a full-stack platform that is part of the main project. This a
 - [ ] Direct integration with Interactive Brokers for live asset-exchange execution.
 - [ ] Pre-compilation backtesting engine within the visual editor.
 - [ ] Machine Learning Models to use within the workspace for trading strategies
+
 
 
 
