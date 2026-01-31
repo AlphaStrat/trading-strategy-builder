@@ -27,7 +27,7 @@ This application is designed to close the gap between visual strategy intuition 
 ## Tech Stack & Algorithms
 
 - **Frontend**: React with **React Flow** for dynamic graph visualization and state management.
-- **Backend**: **FastAPI** (Python 3.10+) utilizing Pydantic for strict diagram validation of strategy graphs.
+- **Backend**: FastAPI (Python 3.10+) utilizing **Pydantic** for strict diagram validation of strategy graphs, exposing **RESTful API endpoints** for strategy management and compilation.
 - **Core Algorithms**: 
     - **Topological Sorting** for dependency resolution.
     - **Graph Traversal** for recursive source routing.
@@ -55,6 +55,7 @@ This application is designed to close the gap between visual strategy intuition 
 - [ ] Direct integration with Interactive Brokers for live asset-exchange execution.
 - [ ] Pre-compilation backtesting engine within the visual editor.
 - [ ] Machine Learning Models to use within the workspace for trading strategies
+
 
 
 
