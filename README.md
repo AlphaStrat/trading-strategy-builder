@@ -51,10 +51,12 @@ This application is designed to close the gap between visual strategy intuition 
 ---
 
 ## Roadmap & Future Scope
+- [ ] Integrate a user database to save and share strategies.
 - [ ] Potential Integration of C# (NinjaScript) and MQL5 transpilation layers.
 - [ ] Direct integration with Interactive Brokers for live asset-exchange execution.
 - [ ] Pre-compilation backtesting engine within the visual editor.
 - [ ] Machine Learning Models to use within the workspace for trading strategies
+
 
 
 
