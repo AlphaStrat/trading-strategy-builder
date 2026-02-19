@@ -17,6 +17,9 @@ import { Play, Download, Save } from 'lucide-react';
 
 import IndicatorPanel from './components/IndicatorPanel';
 import CodePanel from './components/CodePanel';
+import BacktestPanel from './components/BacktestPanel';
+import PipelineMonitor from './components/PipelineMonitor';
+import ConfigEditor from './components/ConfigEditor';
 import IndicatorNode from './components/Nodes/IndicatorNode';
 import LogicNode from './components/Nodes/LogicNode';
 import ActionNode from './components/Nodes/ActionNode';
@@ -52,6 +55,7 @@ function App() {
   const [strategyName, setStrategyName] = useState('My Alpha Strategy');
   const [isCompiling, setIsCompiling] = useState(false);
   const [savedStrategies, setSavedStrategies] = useState([]);
+  const [activeRightPanel, setActiveRightPanel] = useState('backtest'); // 'backtest' | 'monitor' | 'configs' | 'code'
 
   const deletePressed = useKeyPress(['Delete', 'Backspace']);
 
@@ -440,9 +444,44 @@ function App() {
           </ReactFlowProvider>
         </div>
 
-        {/* Right sidebar - Generated code */}
-        <div className="w-1/3 min-w-[300px] max-w-[600px] bg-slate-900 border-l border-slate-700 flex-shrink-0 z-10 shadow-xl">
-          <CodePanel code={generatedCode} language={selectedPlatform} />
+        {/* Right sidebar - Generated code / Backtest */}
+        <div className="w-1/3 min-w-[300px] max-w-[600px] bg-slate-900 border-l border-slate-700 flex-shrink-0 z-10 shadow-xl flex flex-col">
+          {/* Tab switcher */}
+          <div className="flex border-b border-slate-700">
+            {[
+              { key: 'backtest', label: 'Backtest', active: 'text-emerald-400 border-b-2 border-emerald-400 bg-slate-800/50' },
+              { key: 'monitor', label: 'Monitor', active: 'text-cyan-400 border-b-2 border-cyan-400 bg-slate-800/50' },
+              { key: 'configs', label: 'Configs', active: 'text-amber-400 border-b-2 border-amber-400 bg-slate-800/50' },
+              { key: 'code', label: 'Code', active: 'text-blue-400 border-b-2 border-blue-400 bg-slate-800/50' },
+            ].map(tab => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveRightPanel(tab.key)}
+                className={`flex-1 px-2 py-2 text-[10px] font-bold uppercase tracking-wider transition-colors ${
+                  activeRightPanel === tab.key
+                    ? tab.active
+                    : 'text-slate-500 hover:text-slate-300'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+          {/* Panel content */}
+          <div className="flex-1 overflow-hidden">
+            {activeRightPanel === 'backtest' && (
+              <BacktestPanel nodes={nodes} edges={edges} strategyName={strategyName} />
+            )}
+            {activeRightPanel === 'monitor' && (
+              <PipelineMonitor />
+            )}
+            {activeRightPanel === 'configs' && (
+              <ConfigEditor nodes={nodes} edges={edges} strategyName={strategyName} />
+            )}
+            {activeRightPanel === 'code' && (
+              <CodePanel code={generatedCode} language={selectedPlatform} />
+            )}
+          </div>
         </div>
       </div>
     </div>
